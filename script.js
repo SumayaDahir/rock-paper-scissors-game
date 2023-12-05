@@ -42,8 +42,8 @@ let playerResults = 0;
 let computerResults = 0;
 let playerScore = document.querySelector('.playerscore');
 let computerScore = document.querySelector('.computerscore');
-playerScore.textContent = playerResults;
-computerScore.innerHTML = `${computerResults}`;
+// playerScore.textContent = playerResults;
+// computerScore.innerHTML = `${computerResults}`;
 
 // Number of rounds for the game
 let rounds = 3;
@@ -56,10 +56,16 @@ function playRound(playerChoice) {
 
     // Check if rounds are over
     if (rounds === 0) {
-        alert("Game over");
+        if (playerResults > computerResults) {
+            alert(`Game over! Player wins with ${playerResults} points.`);
+        } else if (playerResults < computerResults) {
+            alert(`Game over! Computer wins with ${computerResults} points.`);
+        } else {
+            alert("It's a tie!");
+        }
         resetGame();
-        return;
     }
+    
 
     // Your existing game logic
     if ((playerChoice === 'rock' && computer === 'scissors') ||
